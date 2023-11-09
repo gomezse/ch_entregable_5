@@ -2,6 +2,8 @@ import { Router } from "express";
 import { usersManager } from "../managers/usersManager.js";
 const router = Router();
 
+
+//create user
 router.post("/signup", async (req, res) => {
   const { first_name, last_name, email, password } = req.body;
   if (!first_name || !last_name || !email || !password) {
@@ -15,6 +17,8 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+
+//login user
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -36,8 +40,8 @@ router.post("/login", async (req, res) => {
     //user con permisos de admin
     const sessionInfo =
       email === "adminCoder@coder.com" && password === "adminCod3r123"
-        ? { email, first_name: user.first_name, isAdmin: true }
-        : { email, first_name: user.first_name, isAdmin: false };
+        ? { email, first_name: user.first_name,last_name:user.last_name, isAdmin: true }
+        : { email, first_name: user.first_name,last_name:user.last_name, isAdmin: false };
     
     req.session.user = sessionInfo;
     res.redirect("/profile");
