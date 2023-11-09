@@ -1,0 +1,23 @@
+<h2>Bienvenido {{user.first_name}}</h2>
+<h4>Tu email es: {{user.email}} </h4>
+  {{!-- <h5 class="">{{products}}</h5> --}}
+
+{{#each products}}
+  <h5 class="">{{title}}</h5>
+{{else}}
+  <p>No hay productos disponibles.</p>
+{{/each}}
+
+
+
+{{#if user.isAdmin}}
+    <h3>es admin</h3>
+{{else}}
+    <h3>NO es admin</h3>
+{{/if}}
+
+
+
+
+
+<button><a href="/api/sessions/signout">Salir</a></button>
