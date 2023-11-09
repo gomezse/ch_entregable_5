@@ -6,8 +6,6 @@ import viewsRouter from "./routes/views.router.js";
 import sessionsRouter from "./routes/sessions.router.js";
 import session from "express-session";
 import "./db/configDB.js";
-import fileStore from "session-file-store";
-const FileStore = fileStore(session);
 import MongoStore from "connect-mongo";
 const app = express();
 

@@ -38,6 +38,7 @@ router.post("/login", async (req, res) => {
       email === "adminCoder@coder.com" && password === "adminCod3r123"
         ? { email, first_name: user.first_name, isAdmin: true }
         : { email, first_name: user.first_name, isAdmin: false };
+    
     req.session.user = sessionInfo;
     res.redirect("/profile");
   } catch (error) {

@@ -24,15 +24,6 @@ class ProductsManager {
      * @param {number} limit - Límite de la cantidad de productos a devolver (opcional).
      * @returns {Promise<Array>} - Devuelve una matriz de productos.
      */
-    // async findAll(limit = 0) {
-    //     try {
-    //         const products = await productsModel.find().limit(limit).lean();
-    //         return products;
-    //     } catch (error) {
-    //         return error;
-    //     }
-    // }
-
 
     async findAll(obj) {
         try {
