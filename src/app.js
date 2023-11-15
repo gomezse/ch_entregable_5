@@ -18,7 +18,7 @@ const URI ="mongodb+srv://gomezse:root@ecommerce.sp5zu8k.mongodb.net/";
 
 app.use(
   session({
-    store: new MongoStore({
+     store: new MongoStore({
       mongoUrl: URI,
     }),
     secret: "secretSession",
