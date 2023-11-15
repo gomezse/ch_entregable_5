@@ -7,6 +7,8 @@ import sessionsRouter from "./routes/sessions.router.js";
 import session from "express-session";
 import "./db/configDB.js";
 import MongoStore from "connect-mongo";
+import "./passport.js";
+import passport from "passport";
 const app = express();
 
 app.use(express.json());
@@ -25,6 +27,10 @@ app.use(
     cookie: { maxAge: 90000 },
   })
 );
+
+//config passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // config handlebars
 app.engine("handlebars", handlebars.engine());
