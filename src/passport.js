@@ -69,8 +69,14 @@ passport.use(
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
+
+        //analizando variables que trae del profile....
+        console.log('profile json',profile._json)
+
           const userDB = await usersManager.findByEmail(profile._json.email);
           // login
+      
+
           if (userDB) {
             if (userDB.isGithub) {
               return done(null, userDB);
