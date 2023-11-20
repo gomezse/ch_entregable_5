@@ -7,6 +7,8 @@ import sessionsRouter from "./routes/sessions.router.js";
 import session from "express-session";
 import "./db/configDB.js";
 import MongoStore from "connect-mongo";
+import "./passport.js";
+import passport from "passport";
 const app = express();
 
 app.use(express.json());
@@ -18,13 +20,17 @@ const URI ="mongodb+srv://gomezse:root@ecommerce.sp5zu8k.mongodb.net/";
 
 app.use(
   session({
-    store: new MongoStore({
+     store: new MongoStore({
       mongoUrl: URI,
     }),
     secret: "secretSession",
     cookie: { maxAge: 90000 },
   })
 );
+
+//config passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // config handlebars
 app.engine("handlebars", handlebars.engine());

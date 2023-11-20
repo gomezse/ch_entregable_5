@@ -19,9 +19,10 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/profile", async (req, res) => {
-    if (!req.session.user) {
+    if (!req.session.passport) {
         return res.redirect("/login");
     }
+
     //obtengo listado de productos.
     const products = await productsManager.findAll(req.query);
 
@@ -32,9 +33,18 @@ router.get("/profile", async (req, res) => {
     const { payload } = products;
     const productsObject = payload.map(product => product.toObject());
 
-    console.log('user', req.session.user);
+    console.log('passport', req.session.passport);
+    console.log('user', req.user);
 
-    res.render("profile", { products: productsObject, user: req.session.user });
+    res.render("profile", { products: productsObject, user: req.user });
 });
+
+router.get("/restaurar", (req, res) => {
+    res.render("restaurar");
+  });
+  
+  router.get("/error", (req, res) => {
+    res.render("error");
+  });
 
 export default router;
